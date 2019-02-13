@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProjectDto } from '../models/project-dto';
-import { tap, filter } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProjectService {
   constructor(private apiService: ApiService) { }
 
@@ -20,5 +17,9 @@ export class ProjectService {
 
   updateProject(project: ProjectDto) {
     return this.apiService.put(`project/${project.id}`, project);
+  }
+
+  createProject(project: ProjectDto) {
+    return this.apiService.post('project', project);
   }
 }

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ProjectService, ProjectDto } from '@app/core';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-info',
