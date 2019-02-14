@@ -6,6 +6,10 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ProjectService } from './services/project.service';
 import { ApiService } from './services/api.service';
 import { ProjectTemplateService } from './services/project-template.service';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+import { ExternalServiceService } from './services/external-service.service';
+import { TaskProviderService } from './services/task-provider.service';
 
 @NgModule({
   declarations: [],
@@ -17,7 +21,11 @@ import { ProjectTemplateService } from './services/project-template.service';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ApiService,
     ProjectService,
-    ProjectTemplateService
+    ProjectTemplateService,
+    ExternalServiceService,
+    TaskProviderService,
+    AuthGuard,
+    AuthService
   ]
 })
 export class CoreModule { 

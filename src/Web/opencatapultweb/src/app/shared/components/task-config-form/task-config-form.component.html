@@ -1,3 +1,23 @@
-<p>
-  task-config-form works!
-</p>
+<div [formGroup]="taskConfigForm">
+    <h5>Task: {{task.type}}</h5>
+    
+    <mat-form-field class="full-width-input">
+        <mat-label>Provider</mat-label>
+        <input matInput formControlName="provider" readonly />
+        <mat-error *ngIf="isFieldInvalid('provider')">
+            The task provider "{{task.provider}}" needs to be registered
+        </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="taskProvider">
+        <mat-form-field class="full-width-input" *ngFor="let requiredService of taskProvider.requiredServices">
+            <mat-label>{{requiredService}}ExternalService</mat-label>
+            <input matInput formControlName="{{requiredService}}ExternalService" />
+            <mat-error *ngIf="isFieldInvalid(requiredService + 'ExternalService')">
+                {{getServiceFieldError(requiredService + 'ExternalService')}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <app-clone-task-config-form></app-clone-task-config-form>
+</div>

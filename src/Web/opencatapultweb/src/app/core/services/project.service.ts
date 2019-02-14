@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
-import { ProjectDto } from '../models/project-dto';
+import { ProjectDto } from '../models/project/project-dto';
 
 @Injectable()
 export class ProjectService {

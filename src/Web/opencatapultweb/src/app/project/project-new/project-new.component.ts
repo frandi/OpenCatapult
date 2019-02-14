@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NewProjectDto, ProjectService, ProjectTemplateService, ProjectDto } from '@app/core';
-import { MatSnackBar } from '@angular/material';
 import * as jsYaml from 'js-yaml';
 import { Router } from '@angular/router';
+import { SnackbarService } from '@app/shared';
 
 @Component({
   selector: 'app-project-new',
@@ -24,7 +24,7 @@ export class ProjectNewComponent implements OnInit {
     private fb: FormBuilder,
     private projectService: ProjectService,
     private projectTemplateService: ProjectTemplateService,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackbarService,
     private router: Router
     ) { }
 
@@ -54,9 +54,7 @@ export class ProjectNewComponent implements OnInit {
       this.projectService.createProject(this.projectInfoForm.value)
         .subscribe(
             (data: ProjectDto) => {
-              this.snackBar.open("New project has been created", null, {
-                duration: 2000
-              });  
+              this.snackBar.open("New project has been created");  
               
               this.router.navigate(["project", { dummyData: (new Date).getTime()}])
                 .then(() => this.router.navigate([`project/${data.id}`]));
@@ -64,9 +62,7 @@ export class ProjectNewComponent implements OnInit {
               //this.router.navigate([`/project/${data.id}`, {dummyData: (new Date).getTime()}]); // the dummy data is there to force reload the component
             },
             err => {
-              this.snackBar.open(err, null, {
-                duration: 2000
-              });
+              this.snackBar.open(err);
               this.loading = false;
             });
     }
@@ -94,9 +90,7 @@ export class ProjectNewComponent implements OnInit {
         this.projectTemplate = jsYaml.safeLoad(templateContent);
       },
       err => {        
-        this.snackBar.open(err, null, {
-          duration: 2000
-        });
+        this.snackBar.open(err);
       })
   }
 
