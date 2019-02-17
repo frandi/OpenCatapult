@@ -15,3 +15,5 @@ Build status:
 | Plugin: DotNetCoreTest | [![Build status](https://dev.azure.com/polyrific/OpenCatapult/_apis/build/status/Plugins/OpenCatapult.master.Plugin-DotNetCoreTest)](https://dev.azure.com/polyrific/OpenCatapult/_build/latest?definitionId=338) |
 | Plugin: EntityFrameworkCore | [![Build status](https://dev.azure.com/polyrific/OpenCatapult/_apis/build/status/Plugins/OpenCatapult.master.Plugin-EntityFrameworkCore)](https://dev.azure.com/polyrific/OpenCatapult/_build/latest?definitionId=339) |
 | Plugin: GitHub | [![Build status](https://dev.azure.com/polyrific/OpenCatapult/_apis/build/status/Plugins/OpenCatapult.master.Plugin-GitHub)](https://dev.azure.com/polyrific/OpenCatapult/_build/latest?definitionId=340) |
+
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
