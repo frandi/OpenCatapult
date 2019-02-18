@@ -66,16 +66,15 @@
               "[concat('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
             ],
             "properties": {
-              "edition": "Web",
               "collation": "SQL_Latin1_General_CP1_CI_AS",
-              "maxSizeBytes": "1073741824",
-              "requestedServiceObjectiveId": "910b4fcb-8a29-4c3e-958f-f7ba794388b2"
+              "maxSizeBytes": "524288000"
             },
             "sku": {
-                "name": "Basic",
-                "tier": "Basic",
-                "capacity": 5
-            }
+              "name": "Basic",
+              "tier": "Basic",
+              "capacity": 5
+            },
+            "kind": "v12.0,user"
           },
           {
             "apiVersion": "2014-04-01",
@@ -88,14 +87,14 @@
               "endIpAddress": "0.0.0.0",
               "startIpAddress": "0.0.0.0"
             },
-            "type": "firewallrules"
+            "type": "firewallRules"
           }
         ]
       },
       {
         "apiVersion": "2014-06-01",
         "name": "[parameters('hostingPlanName')]",
-        "type": "Microsoft.Web/serverFarms",
+        "type": "Microsoft.Web/serverfarms",
         "location": "[parameters('siteLocation')]",
         "properties": {
           "name": "[parameters('hostingPlanName')]",
@@ -107,10 +106,10 @@
       {
         "apiVersion": "2014-06-01",
         "name": "[parameters('siteName')]",
-        "type": "Microsoft.Web/Sites",
+        "type": "Microsoft.Web/sites",
         "location": "[parameters('siteLocation')]",
         "dependsOn": [
-          "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+          "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
         ],
         "tags": {
           "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "empty"
@@ -121,7 +120,7 @@
         },
         "resources": [
           {
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2014-06-01",
             "type": "config",
             "name": "web",
             "dependsOn": [
@@ -138,7 +137,7 @@
             }
           },
           {
-            "apiVersion": "2014-04-01",
+            "apiVersion": "2014-06-01",
             "name": "web",
             "type": "sourcecontrols",
             "dependsOn": [
